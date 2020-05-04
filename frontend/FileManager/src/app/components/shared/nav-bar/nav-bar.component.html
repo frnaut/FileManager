@@ -1,0 +1,12 @@
+<nav class="navbar navbar-info bg-info">
+    <div class="container">
+        <div>
+            <a [routerLink]="[ '/home' ]">
+                <span class="navbar-brand mb-0 h1 text-light">FilesManager</span>
+            </a>
+        </div>
+        <div *ngIf="login">
+            <a (click)="logOut()" class="nav-link text-light">Cerrar sesion</a>
+        </div>
+    </div>
+</nav>
