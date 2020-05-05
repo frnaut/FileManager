@@ -87,19 +87,19 @@
                         </thead>
                         <tbody class="animated fadeInLeft fast">
                                 <tr *ngFor="let data of Personals"> 
-                                    <th scope="row">{{data.id}}</th>
-                                    <td>{{data.name}}</td>
-                                    <td>{{data.lastName}}</td>
-                                    <td>{{data.identification}}</td>
-                                    <td>{{data.created | date: 'dd/MM/yyyy'}}</td>
-                                    <td>
-                                    <a class="btn btn-success mr-3 mb-2 pl-3 pr-3 text-light" [routerLink]="[ '/profile', data.identification ]">
-                                        <i class="fas fa-arrow-right"></i>
-                                    </a>
-                                        <button type="button" (click)="delete(data.id)" class="btn btn-danger mb-2 pl-4 pr-4">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </td>
+                                        <th scope="row">{{data.id}}</th>
+                                        <td>{{data.name}}</td>
+                                        <td>{{data.lastName}}</td>
+                                        <td>{{data.identification}}</td>
+                                        <td>{{data.created | date: 'dd/MM/yyyy'}}</td>
+                                        <td>
+                                        <a class="btn btn-success mr-3 mb-2 pl-3 pr-3 text-light" [routerLink]="[ '/profile', data.identification ]">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                            <button type="button" (click)="delete(data.id)" class="btn btn-danger mb-2 pl-4 pr-4">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
                                 </tr>
                         </tbody>
                     </table>
