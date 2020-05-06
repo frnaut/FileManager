@@ -14,7 +14,7 @@ namespace FilesManager.Data.Repository
             {
                 byte[] imgByte = Convert.FromBase64String(base64);
                 var path = $"wwwroot/Files/";
-                var server = "https://localhost:44327/";
+                var server = "frnaut-001-site1.atempurl.com";
                 
 
                 if (!Directory.Exists(path))

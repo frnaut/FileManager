@@ -43,9 +43,9 @@ namespace FilesManager
                     .AddEntityFrameworkStores<AppDbContext>()
                     .AddDefaultTokenProviders();
 
-
+            
             services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer("Data Source=(localdb)\\ProjectsV13;Initial Catalog=FileManager;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
+            options.UseSqlServer("data source = SQL5047.site4now.net; initial catalog = DB_A5E587_FileManager; user id = DB_A5E587_FileManager_admin; password = 6366aaee36"));
 
             #endregion
 

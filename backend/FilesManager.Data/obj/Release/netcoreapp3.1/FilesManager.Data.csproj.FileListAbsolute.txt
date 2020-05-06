@@ -1,0 +1,15 @@
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\bin\Release\netcoreapp3.1\FilesManager.Data.deps.json
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\bin\Release\netcoreapp3.1\FilesManager.Data.runtimeconfig.json
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\bin\Release\netcoreapp3.1\FilesManager.Data.runtimeconfig.dev.json
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\bin\Release\netcoreapp3.1\FilesManager.Data.dll
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\bin\Release\netcoreapp3.1\FilesManager.Data.pdb
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\bin\Release\netcoreapp3.1\FilesManager.Core.dll
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\bin\Release\netcoreapp3.1\FilesManager.Core.pdb
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\obj\Release\netcoreapp3.1\FilesManager.Data.csprojAssemblyReference.cache
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\obj\Release\netcoreapp3.1\FilesManager.Data.csproj.CoreCompileInputs.cache
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\obj\Release\netcoreapp3.1\FilesManager.Data.AssemblyInfoInputs.cache
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\obj\Release\netcoreapp3.1\FilesManager.Data.AssemblyInfo.cs
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\obj\Release\netcoreapp3.1\FilesManager.Data.csproj.CopyComplete
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\obj\Release\netcoreapp3.1\FilesManager.Data.dll
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\obj\Release\netcoreapp3.1\FilesManager.Data.pdb
+D:\Desarrollo\Proyectos\FilesManager\FileManger\BackEnd\FilesManager.Data\obj\Release\netcoreapp3.1\FilesManager.Data.genruntimeconfig.cache
