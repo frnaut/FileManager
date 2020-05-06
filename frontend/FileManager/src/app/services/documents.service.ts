@@ -10,6 +10,9 @@ export class DocumentsService {
 
   constructor(private _http : HttpClient) { }
 
+  UrlDev = 'https://localhost:44327/'
+  UrlProd = 'http://frnaut-001-site1.atempurl.com/'
+
   addDocument(document: DocumentRequest)
   {
     var headers = new HttpHeaders({
@@ -17,8 +20,7 @@ export class DocumentsService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    var Urls = 'https://localhost:44327/';
-    return this._http.post(`${Urls}api/Documents`,document, {headers})
+    return this._http.post(`${this.UrlProd}api/Documents`,document, {headers})
   }
 
   deleteDocument(id: number)
@@ -28,7 +30,6 @@ export class DocumentsService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
     
-    var Urls = 'https://localhost:44327/';
-    return this._http.delete(`${Urls}api/Documents/${id}`, {headers})
+    return this._http.delete(`${this.UrlProd}api/Documents/${id}`, {headers})
   }
 }

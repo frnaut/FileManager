@@ -15,18 +15,21 @@ export class AccountService {
   
   constructor( private _http: HttpClient ) { }
 
+  
+
+  UrlDev = 'https://localhost:44327/'
+  UrlProd = 'http://frnaut-001-site1.atempurl.com/'
 
 
   register(user: UserModel)
   {
-    var Urls = 'https://localhost:44327/';
-    return this._http.post(`${Urls}api/cuentas/registro`, user)
+    
+    return this._http.post(`${this.UrlProd}api/cuentas/registro`, user)
   }
 
   login(user: UserModel)
   {
-    var Urls = 'https://localhost:44327/';
-    return this._http.post(`${Urls}api/cuentas/login`, user)
+    return this._http.post(`${this.UrlProd}api/cuentas/login`, user)
   }
 
   isLogin()

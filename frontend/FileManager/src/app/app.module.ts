@@ -16,7 +16,6 @@ import { RegisterComponent } from './components/account/register/register.compon
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { EmptyComponent } from './components/shared/empty/empty.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from '../app/modules/angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,7 @@ import { AngularMaterialModule } from '../app/modules/angular-material/angular-m
   ],
   imports: [
     BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,
-    HttpClientModule, BrowserAnimationsModule, AngularMaterialModule
+    HttpClientModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

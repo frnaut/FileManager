@@ -38,6 +38,11 @@ export class HomeComponent implements OnInit {
     this.getAllPersonal();
   }
 
+  prueba(e)
+  {
+    console.log(e)
+  }
+
   getAllPersonal()
   {
     this._service.personalDocGetAll().subscribe((resp: PersonaResponse[]) =>{

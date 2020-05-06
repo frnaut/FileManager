@@ -10,27 +10,27 @@ export class FileUploadService {
   constructor( private _http : HttpClient ) {
   }
 
+  UrlDev = 'https://localhost:44327/'
+  UrlProd = 'http://frnaut-001-site1.atempurl.com/'
   
   personalDocGetAll()
   {
-    var Urls = 'https://localhost:44327/';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
     
-    return this._http.get(`${Urls}api/FileManager/`, {headers});
+    return this._http.get(`${this.UrlProd}api/FileManager/`, {headers});
   }
 
   getById(id: number)
   {
-    var Urls = 'https://localhost:44327/';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.get(`${Urls}api/FileManager/${id}`, {headers});
+    return this._http.get(`${this.UrlProd}api/FileManager/${id}`, {headers});
   }
 
   getByIdentification(param: string)
@@ -40,8 +40,7 @@ export class FileUploadService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    var Urls = 'https://localhost:44327/';
-    return this._http.get(`${Urls}api/filemanager/search/${param}`, {headers})
+    return this._http.get(`${this.UrlProd}api/filemanager/search/${param}`, {headers})
   }
   
   postPersonalDocument(data: PersonalModel)
@@ -51,29 +50,27 @@ export class FileUploadService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    var Urls = 'https://localhost:44327/';
-    return this._http.post(`${Urls}api/FileManager`, data, {headers});
+    return this._http.post(`${this.UrlProd}api/FileManager`, data, {headers});
   }
 
   delete(id: number)
   {
-    var Urls = 'https://localhost:44327/';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.delete(`${Urls}api/FileManager/${id}`, {headers});
+    return this._http.delete(`${this.UrlProd}api/FileManager/${id}`, {headers});
   }
   put(id: number, data: PersonalModel)
   {
-    var Urls = 'https://localhost:44327/';
+   
     var headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.put(`${Urls}api/FileManager/${id}`, data, {headers});
+    return this._http.put(`${this.UrlProd}api/FileManager/${id}`, data, {headers});
   }
 
 }
