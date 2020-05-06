@@ -32,7 +32,7 @@
             <div *ngIf="!notRegistor">
                 <div *ngIf="!loading" class="row">
                     <div class="col-md-4 ml-md-3" *ngIf="!data == ''">
-                        <div>
+                        <div *ngIf="data.profileImage != ''">
                             <img src="{{data.profileImage}}" class="w-100 h-100" alt="foto-perfil">
                         </div>
                         <div *ngIf="data.profileImage == ''">
