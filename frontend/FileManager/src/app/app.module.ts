@@ -15,8 +15,8 @@ import { LoginComponent } from './components/account/login/login.component';
 import { RegisterComponent } from './components/account/register/register.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { EmptyComponent } from './components/shared/empty/empty.component';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from '../app/modules/angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { EmptyComponent } from './components/shared/empty/empty.component';
   ],
   imports: [
     BrowserModule, AppRoutingModule, ReactiveFormsModule, FormsModule,
-    HttpClientModule
+    HttpClientModule, BrowserAnimationsModule, AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
