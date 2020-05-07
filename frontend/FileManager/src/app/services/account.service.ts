@@ -18,7 +18,7 @@ export class AccountService {
   
 
   UrlDev = 'https://localhost:44327/'
-  UrlProd = 'https://filesmanager20200506202017.azurewebsites.net/'
+  UrlAzure = 'https://filesmanager20200506202017.azurewebsites.net/'
   UrlSmarterASP = 'http://frnaut-001-site1.atempurl.com/'
 
   register(user: UserModel)

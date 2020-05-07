@@ -61,7 +61,7 @@ namespace FilesManager.Core.Managers
             {
                 var img = await _repository.GetById(id);
                 model.ProfileImage = img.ProfileImage;
-                
+   
             }
             else
             {
@@ -73,7 +73,10 @@ namespace FilesManager.Core.Managers
 
         public async Task<PersonalModel> DeleteAsync(int id)
         {
-            var model = await _repository.DeleteAsync(id);
+
+            var model = await _repository.GetById(id);
+            await _repository.DeleteAsync(id);
+            _upload.DeleteFile(model.ProfileImage);
             return model;
         }
 

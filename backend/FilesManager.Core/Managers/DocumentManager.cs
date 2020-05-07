@@ -54,7 +54,11 @@ namespace FilesManager.Core.Managers
 
         public async Task<DocumentModel> DeleteAsync(int id)
         {
-            return await _repository.DeleteAsync(id);
+            var model = await _repository.GetById(id);
+            await _repository.DeleteAsync(id);
+            _upload.DeleteFile(model.path);
+
+            return model;
         }
         
     }

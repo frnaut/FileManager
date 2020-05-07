@@ -105,7 +105,7 @@
             <tbody >  
               <tr class="animated fadeInLeft fast" *ngFor="let document of data.documents | paginate: paginationConf">
                 <th scope="row">{{document.id}}</th>
-                <td>{{document.name | uppercase}}}</td>
+                <td>{{document.name | uppercase}}</td>
                 <td>{{document.format | uppercase}}</td>
                 <td>{{document.created | date: 'dd/MM/yyyy'}}</td>
                 <td>
