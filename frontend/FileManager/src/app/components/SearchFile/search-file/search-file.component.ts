@@ -25,6 +25,22 @@ export class SearchFileComponent implements OnInit {
     this.form = this.searchForm;
     this.loading = false;
   }
+  delete(id: number)
+  {
+    var result = confirm("¿Desea eliminar este registro?");
+    if(result == true)
+    {
+      this._service.delete(id).subscribe((resp: PersonaResponse) => {
+        alert(`El registro '${resp.name} ${resp.lastName}' ha sido eliminado`)
+        this.notRegistor = true;
+      }, err => {
+        for(let data of err.error)
+        {
+          alert(data.description);
+        }
+      })
+    }
+  }
 
   search()
   {
