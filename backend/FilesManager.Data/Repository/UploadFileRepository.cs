@@ -8,13 +8,29 @@ namespace FilesManager.Data.Repository
 {
     public class UploadFileRepository : IUploadFileRepository
     {
+        public void DeleteFile(string url)
+        {
+            var path = $"wwwroot/{url.Substring(37)}";
+            try
+            {
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+
+            }catch(Exception ex)
+            {
+                ex.Message.ToString();
+            }
+        }
+
         string IUploadFileRepository.UploadFile(string base64, string format, string name)
         {
             try
             {
                 byte[] imgByte = Convert.FromBase64String(base64);
-                var path = $"Files/";
-                var server = "https://filesmanager20200506202017.azurewebsites.net/";
+                var path = $"wwwroot/Files/";
+                var server = "http://frnaut-001-site1.atempurl.com/";
                 
 
                 if (!Directory.Exists(path))

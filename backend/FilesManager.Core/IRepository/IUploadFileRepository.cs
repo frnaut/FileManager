@@ -7,5 +7,6 @@ namespace FilesManager.Core.IRepository
     public interface IUploadFileRepository
     {
         string UploadFile(string base64, string format, string name);
+        void DeleteFile(string url);
     }
 }
