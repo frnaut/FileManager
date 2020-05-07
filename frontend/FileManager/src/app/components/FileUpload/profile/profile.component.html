@@ -102,7 +102,7 @@
                 <th scope="col">Herramientas</th>
               </tr>
             </thead>
-            <tbody >
+            <tbody >  
               <tr class="animated fadeInLeft fast" *ngFor="let document of data.documents | paginate: paginationConf">
                 <th scope="row">{{document.id}}</th>
                 <td>{{document.name | uppercase}}}</td>
@@ -120,7 +120,8 @@
               </tr>
             </tbody>
           </table>
-          <div class="col-12 mt-3 d-flex justify-content-center">
+
+          <div *ngIf="!noRegister" class="col-12 mt-3 d-flex justify-content-center">
             <pagination-template #p="paginationApi" [id]="paginationConf.id" [maxSize]="maxSizePagination"
             autoHide="true" (pageChange)="paginationConf.currentPage = $event">
             <nav aria-label="Page navigation example">
