@@ -5,6 +5,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DocumentsService } from 'src/app/services/documents.service';
 import { DocumentModel } from 'src/app/Models/DocumentModel';
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
   selector: 'app-profile',
@@ -13,9 +14,26 @@ import { DocumentModel } from 'src/app/Models/DocumentModel';
 })
 export class ProfileComponent implements OnInit {
 
-  //#region  formularios
- 
+  //#region Paginacion
+  maxSizePagination: string = '6';
+  paginationConf: PaginationInstance = {
+    id: 'advanced',
+    itemsPerPage: 5,
+    currentPage: 1
+  }
+  label: object = {
+    previousLabel: 'Back',
+    nextLabel: 'Next',
+    screenReaderPaginationLabel: 'page',
+    screenReaderCurrentLabel: "You're on page"
+  }
 
+  onPageChange(number: number){
+    this.paginationConf.currentPage = number;
+  }
+  //#endregion
+
+  //#region  formularios
   newDocForm = new FormGroup({
     document: new FormControl(''),
     format: new FormControl(''),
@@ -35,6 +53,8 @@ export class ProfileComponent implements OnInit {
   upload: boolean;
   loading: boolean;
   noRegister: boolean;
+  file: string;
+  doc: string;
   //#endregion
   
   constructor( private _service: FileUploadService, 
@@ -54,6 +74,7 @@ export class ProfileComponent implements OnInit {
     this.newFormDoc.value.personalidadId = id;
     this._service.getByIdentification(id).subscribe((resp: PersonaResponse) => {
       this.data = resp;
+      this.data.documents.sort(x => x.id).reverse()
       this.loading = false;
       this.noRegister = false;
       if(resp.documents.length <= 0)
@@ -74,6 +95,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+
   //#region Documentos
   sendDocument( id: number )
   {
@@ -84,7 +106,7 @@ export class ProfileComponent implements OnInit {
       this._document.addDocument(this.newFormDoc.value).subscribe(resp => {
         // console.log(resp);
         this.upload = true;
-      
+
         setTimeout(() => {
           this.upload = false;
         }, 3000);
@@ -126,7 +148,7 @@ export class ProfileComponent implements OnInit {
   }
 
   uploadDoc(file: FileList) {
-    // console.log(file[0])
+    this.doc = file.item(0).name
     this.newFormDoc.value.name = file[0].name;
     this.newFormDoc.value.format = file[0].name.slice(-4);
     var reader = new FileReader();
@@ -144,11 +166,12 @@ export class ProfileComponent implements OnInit {
   //#region Formulario Editar
   editSubmit(id: number)
   {
-    console.log(this.editForm)
     if(this.editForm.valid)
     {
       this._service.put(id, this.editForm.value).subscribe( resp => {
-        this._router.navigateByUrl(`/profile/${this.editForm.value.identification}`);
+        this.edited = true;
+        setTimeout(()=> this.edited = false, 3000)
+        setTimeout(() => this.ngOnInit(), 600)
       },err => {
         for(let data of err.error)
         {
@@ -161,7 +184,7 @@ export class ProfileComponent implements OnInit {
   
   
   uploadImg(file: FileList) {
-    // console.log(file[0])
+    this.file = file.item(0).name
     this.editForm.value.imageName = file[0].name;
     this.editForm.value.imageFormat = file[0].name.slice(-4);
     var reader = new FileReader();

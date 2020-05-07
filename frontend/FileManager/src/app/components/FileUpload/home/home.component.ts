@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { FileUploadService } from '../../../services/file-upload.service';
 import { PersonaResponse } from 'src/app/Models/FileUploads/PersonaResponse';
+import { PaginationInstance } from 'ngx-pagination';
+import { onErrorResumeNext } from 'rxjs';
 
 
 @Component({
@@ -10,6 +12,26 @@ import { PersonaResponse } from 'src/app/Models/FileUploads/PersonaResponse';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  //#region Paginacion
+  maxSizePagination: string = '6';
+  paginationConf: PaginationInstance = {
+    id: 'advanced',
+    itemsPerPage: 5, 
+    currentPage: 1
+  }
+  label: object = {
+    previousLabel: 'Back',
+    nextLabel: 'Next',
+    screenReaderPaginationLabel: 'page',
+    screenReaderCurrentLabel: "You're on page"
+  }
+
+  onPageChange(number: number){
+    this.paginationConf.currentPage = number;
+  }
+  //#endregion
+
+
 
   newForm = new FormGroup({
     name: new FormControl(''),
@@ -26,7 +48,7 @@ export class HomeComponent implements OnInit {
   Personals: PersonaResponse[];
   loading: boolean;
   notRegistor: boolean;
-
+  file: string;
   constructor( private _service: FileUploadService ) { 
   }
   
@@ -38,15 +60,11 @@ export class HomeComponent implements OnInit {
     this.getAllPersonal();
   }
 
-  prueba(e)
-  {
-    console.log(e)
-  }
-
   getAllPersonal()
   {
     this._service.personalDocGetAll().subscribe((resp: PersonaResponse[]) =>{
       this.Personals = resp;
+      this.Personals.sort(x => x.id).reverse();
       this.loading = false;
       if(this.Personals == []){
         this.notRegistor = true;
@@ -64,12 +82,12 @@ export class HomeComponent implements OnInit {
       this._service.postPersonalDocument(this.form.value)
                     .subscribe(data=> { 
                       // console.log(this.form)
-                        data
+                        this.file = '';
                         this.created = true;
                         setTimeout(() => {
                           this.created = false;
                         }, 3000);
-
+                        
                         setTimeout(() => {
                           this.getAllPersonal();
                         }, 100);
@@ -97,6 +115,7 @@ export class HomeComponent implements OnInit {
   clear()
   {
     this.form.reset();
+    this.file = '';
   }
   //#endregion
 
@@ -120,7 +139,7 @@ export class HomeComponent implements OnInit {
 
   //#region  get base64
   uploadImg(file: FileList) {
-    // console.log(file[0])
+    this.file = file.item(0).name;
     this.form.value.imageName = file[0].name;
     this.form.value.imageFormat = file[0].name.slice(-4);
     var reader = new FileReader();

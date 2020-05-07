@@ -35,7 +35,7 @@
           <div class="animated fadeIn fast" *ngIf="edited" class="alert alert-warning" role="alert">
             Elemento editado.
           </div>
-          <div class="animated fadeIn fast" *ngIf="edited" class="alert alert-warning" role="alert">
+          <div class="animated fadeIn fast" *ngIf="upload" class="alert alert-warning" role="alert">
             Documento enviado.
           </div>
             <form class="animated fadeIn fast" *ngIf="edit == true" [formGroup]="editForm">
@@ -57,6 +57,7 @@
                 || (event.keyCode==46) )">
 
                  <!-- image -->
+                 <span class="text-success">{{file}}</span>
                  <div class="input-group mb-3">
                     <div class="custom-file">
                       <input (change)="uploadImg($event.target.files)"
@@ -73,6 +74,7 @@
             <!-- formulario para agregar documentos -->
             <form class="animated fadeIn fast" *ngIf="newDoc == true" [formGroup]="newFormDoc">
               <!-- Doc -->
+              <span class="text-success">{{doc}}</span>
               <div class="input-group mb-3">
                 <div class="custom-file">
                   <input (change)="uploadDoc($event.target.files)" required
@@ -101,10 +103,10 @@
               </tr>
             </thead>
             <tbody >
-              <tr class="animated fadeInLeft fast" *ngFor="let document of data.documents">
+              <tr class="animated fadeInLeft fast" *ngFor="let document of data.documents | paginate: paginationConf">
                 <th scope="row">{{document.id}}</th>
-                <td>{{document.name}}</td>
-                <td>{{document.format}}</td>
+                <td>{{document.name | uppercase}}}</td>
+                <td>{{document.format | uppercase}}</td>
                 <td>{{document.created | date: 'dd/MM/yyyy'}}</td>
                 <td>
                     <a class="btn btn-success mr-3" href="{{document.path}}" target="_blank">
@@ -118,5 +120,36 @@
               </tr>
             </tbody>
           </table>
+          <div class="col-12 mt-3 d-flex justify-content-center">
+            <pagination-template #p="paginationApi" [id]="paginationConf.id" [maxSize]="maxSizePagination"
+            autoHide="true" (pageChange)="paginationConf.currentPage = $event">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li [className]="p.isFirstPage() ? 'page-item disabled' : 'page-item'">
+                        <a class="page-link" (click)="p.previous()" aria-label="Previous">
+                            <span aria-hidden="true">«</span>
+                        </a>
+                    </li>
+
+                    <li *ngFor="let page of p.pages" [className]=" p.getCurrent() === page.value ? 'page-item disabled' : 'page-item'" >
+                        <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== p.value">
+                            {{page.label}}
+                        </a>
+                        
+                        <a class="page-link" *ngIf="p.getCurrent() === p.value">
+                            {{ page.label }}
+                        </a>
+                    </li>
+
+                    <li [className]="p.isLastPage() ? 'page-item disabled' : 'page-item'">
+                        <a class="page-link" (click)="p.next()" aria-label="Next">
+                            <span aria-hidden="true">»</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+                
+            </pagination-template>
+        </div>
     </div>
 </div>

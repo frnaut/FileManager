@@ -13,13 +13,13 @@ namespace FilesManager.Data.Repository
             try
             {
                 byte[] imgByte = Convert.FromBase64String(base64);
-                var path = $"wwwroot/Files/";
-                var server = "http://frnaut-001-site1.atempurl.com/";
+                var path = $"Files/";
+                var server = "https://filesmanager20200506202017.azurewebsites.net/";
                 
 
                 if (!Directory.Exists(path))
                 {
-                    Directory.CreateDirectory(path);
+                        var dir = Directory.CreateDirectory(path);
                 }
                 
                 path = path + $"{name}.{format}";

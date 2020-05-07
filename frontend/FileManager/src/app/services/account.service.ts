@@ -18,18 +18,18 @@ export class AccountService {
   
 
   UrlDev = 'https://localhost:44327/'
-  UrlProd = 'http://frnaut-001-site1.atempurl.com/'
-
+  UrlProd = 'https://filesmanager20200506202017.azurewebsites.net/'
+  UrlSmarterASP = 'http://frnaut-001-site1.atempurl.com/'
 
   register(user: UserModel)
   {
     
-    return this._http.post(`${this.UrlProd}api/cuentas/registro`, user)
+    return this._http.post(`${this.UrlSmarterASP}api/cuentas/registro`, user)
   }
 
   login(user: UserModel)
   {
-    return this._http.post(`${this.UrlProd}api/cuentas/login`, user)
+    return this._http.post(`${this.UrlSmarterASP}api/cuentas/login`, user)
   }
 
   isLogin()

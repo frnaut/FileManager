@@ -11,7 +11,8 @@ export class DocumentsService {
   constructor(private _http : HttpClient) { }
 
   UrlDev = 'https://localhost:44327/'
-  UrlProd = 'http://frnaut-001-site1.atempurl.com/'
+  UrlProd = 'https://filesmanager20200506202017.azurewebsites.net/'
+  UrlSmarterASP = 'http://frnaut-001-site1.atempurl.com/'
 
   addDocument(document: DocumentRequest)
   {
@@ -20,7 +21,7 @@ export class DocumentsService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.post(`${this.UrlProd}api/Documents`,document, {headers})
+    return this._http.post(`${this.UrlSmarterASP}api/Documents`,document, {headers})
   }
 
   deleteDocument(id: number)
@@ -30,6 +31,6 @@ export class DocumentsService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
     
-    return this._http.delete(`${this.UrlProd}api/Documents/${id}`, {headers})
+    return this._http.delete(`${this.UrlSmarterASP}api/Documents/${id}`, {headers})
   }
 }

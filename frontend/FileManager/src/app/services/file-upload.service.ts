@@ -11,8 +11,9 @@ export class FileUploadService {
   }
 
   UrlDev = 'https://localhost:44327/'
-  UrlProd = 'http://frnaut-001-site1.atempurl.com/'
-  
+  UrlProd = 'https://filesmanager20200506202017.azurewebsites.net/'
+  UrlSmarterASP = 'http://frnaut-001-site1.atempurl.com/'
+
   personalDocGetAll()
   {
     var headers = new HttpHeaders({
@@ -20,7 +21,7 @@ export class FileUploadService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
     
-    return this._http.get(`${this.UrlProd}api/FileManager/`, {headers});
+    return this._http.get(`${this.UrlSmarterASP}api/FileManager/`, {headers});
   }
 
   getById(id: number)
@@ -30,7 +31,7 @@ export class FileUploadService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.get(`${this.UrlProd}api/FileManager/${id}`, {headers});
+    return this._http.get(`${this.UrlSmarterASP}api/FileManager/${id}`, {headers});
   }
 
   getByIdentification(param: string)
@@ -40,7 +41,7 @@ export class FileUploadService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.get(`${this.UrlProd}api/filemanager/search/${param}`, {headers})
+    return this._http.get(`${this.UrlSmarterASP}api/filemanager/search/${param}`, {headers})
   }
   
   postPersonalDocument(data: PersonalModel)
@@ -50,7 +51,7 @@ export class FileUploadService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.post(`${this.UrlProd}api/FileManager`, data, {headers});
+    return this._http.post(`${this.UrlSmarterASP}api/FileManager`, data, {headers});
   }
 
   delete(id: number)
@@ -60,7 +61,7 @@ export class FileUploadService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.delete(`${this.UrlProd}api/FileManager/${id}`, {headers});
+    return this._http.delete(`${this.UrlSmarterASP}api/FileManager/${id}`, {headers});
   }
   put(id: number, data: PersonalModel)
   {
@@ -70,7 +71,7 @@ export class FileUploadService {
       'Authorization': 'Bearer' +' '+localStorage.getItem('token')
     });
 
-    return this._http.put(`${this.UrlProd}api/FileManager/${id}`, data, {headers});
+    return this._http.put(`${this.UrlSmarterASP}api/FileManager/${id}`, data, {headers});
   }
 
 }

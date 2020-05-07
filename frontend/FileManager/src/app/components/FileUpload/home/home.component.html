@@ -41,6 +41,7 @@
                 || (event.keyCode==46) )">
                 
                 <!-- image -->
+                <span class="text-success">{{file}}</span>
                 <div class="input-group mb-3">
                     <div class="custom-file">
                       <input (change)="uploadImg($event.target.files)"
@@ -86,10 +87,10 @@
                         </tr>
                         </thead>
                         <tbody class="animated fadeInLeft fast">
-                                <tr *ngFor="let data of Personals"> 
+                                <tr *ngFor="let data of Personals | paginate: paginationConf"> 
                                         <th scope="row">{{data.id}}</th>
-                                        <td>{{data.name}}</td>
-                                        <td>{{data.lastName}}</td>
+                                        <td>{{data.name | uppercase}}</td>
+                                        <td>{{data.lastName | uppercase}}</td>
                                         <td>{{data.identification}}</td>
                                         <td>{{data.created | date: 'dd/MM/yyyy'}}</td>
                                         <td>
@@ -103,6 +104,39 @@
                                 </tr>
                         </tbody>
                     </table>
+
+                    <div class="col-12 mt-3 d-flex justify-content-center">
+                        <pagination-template #p="paginationApi" [id]="paginationConf.id" [maxSize]="maxSizePagination"
+                        autoHide="true" (pageChange)="paginationConf.currentPage = $event">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li [className]="p.isFirstPage() ? 'page-item disabled' : 'page-item'">
+                                    <a class="page-link" (click)="p.previous()" aria-label="Previous">
+                                        <span aria-hidden="true">«</span>
+                                    </a>
+                                </li>
+
+                                <li *ngFor="let page of p.pages" [className]=" p.getCurrent() === page.value ? 'page-item disabled' : 'page-item'" >
+                                    <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== p.value">
+                                        {{page.label}}
+                                    </a>
+                                    
+                                    <a class="page-link" *ngIf="p.getCurrent() === p.value">
+                                        {{ page.label }}
+                                    </a>
+                                </li>
+
+                                <li [className]="p.isLastPage() ? 'page-item disabled' : 'page-item'">
+                                    <a class="page-link" (click)="p.next()" aria-label="Next">
+                                        <span aria-hidden="true">»</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                            
+                        </pagination-template>
+                    </div>
+
                 </div>
             </div>
         </div>
